@@ -4,6 +4,8 @@ const express = require('express')
 const { default: mongoose } = require('mongoose')
 const cors = require('cors')
 
+require( './cron')
+
 const app = express() 
 
 mongoose.connect(process.env.DATABASE_URL)
@@ -17,3 +19,6 @@ app.use(cors())
 app.use('/ticket', require('./routes/ticket'))
 
 app.listen(3030, () => console.log('app listen on port 3030'))
+
+
+

@@ -12,7 +12,12 @@ const ticketSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         require: true,
-        default: Date.now()
+        default: new Date()
+    },
+    state : {
+        type: String, 
+        default: 'Open',
+        require: true
     }
 })
 

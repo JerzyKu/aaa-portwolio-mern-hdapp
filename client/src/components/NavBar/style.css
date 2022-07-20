@@ -2,8 +2,22 @@ nav {
     display: flex;
     margin-bottom: 10px;
     background-color: rgb(166, 182, 79);
+    padding: 7px;
 }
 
 nav * {
     margin-left: 5px;
+}
+
+nav a:link,
+nav a:visited,
+nav a:hover,
+nav a:active
+{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-bar--baner {
+    margin-right: auto;
 }

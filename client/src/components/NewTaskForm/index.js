@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { faker } from '@faker-js/faker';
 
 export default function NewTaskForm() {
   const [formData, setFormData] = useState({ title: "", description: "" });
@@ -20,10 +21,18 @@ export default function NewTaskForm() {
   const handleSubmit = (event) => {
     event.preventDefault()
     Axios.post('http://localhost:3030/ticket', formData).then(
-      (response) => { 
+      (response) => {
         navigate('/')
-       }
+      }
     )
+  }
+
+  const handleFakeData = (e) => {
+    e.preventDefault()
+    setFormData({
+      title: faker.hacker.phrase(),
+      description: faker.lorem.words(15)
+    })
   }
 
   return (
@@ -34,16 +43,19 @@ export default function NewTaskForm() {
         onChange={handleChange}
         name='title'
         placeholder="Title."
-        autocomplete="off"
+        autoComplete="off"
+        required={true}
       /><br />
       <textarea
         value={formData.description}
         placeholder="Description."
         onChange={handleChange}
         name="description"
+        required={true}
       />
       <button type="reset">Reset</button>
       <button>Submit</button>
+      <button onClick={handleFakeData}>Fake</button>
     </form>
   );
 }
