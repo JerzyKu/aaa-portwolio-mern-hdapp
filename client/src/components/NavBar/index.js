@@ -1,16 +1,44 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import './style.css'
-import logo from '../../images/react-icon-small.png'
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+import { LinkContainer } from 'react-router-bootstrap'
 
 
 export default function NavBar() {
   return (
-    <nav>
-      <img src={logo} alt='logo'/>
-        <p className='nav-bar--baner'>{`Logo`} </p>
-        <Link to='/new-task'>New Task</Link><br />
-        <Link to='/all'> All task</Link>
-    </nav>
+    <Navbar bg="light" expand="lg">
+      <Container className='nav-bar'>
+        <Navbar.Brand href="#home"><i class="emoji-rocket"></i> Rocket-HelpDesk</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <LinkContainer to="/new-task">
+              <Nav.Link>NewTask</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/all">
+              <Nav.Link>All</Nav.Link>
+            </LinkContainer>
+            {/* <Nav.Link href="#home">Home</Nav.Link> */}
+            {/* <Nav.Link href="#link">Link</Nav.Link> */}
+            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   )
 }
